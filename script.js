@@ -1,11 +1,28 @@
+const Scene = {
+    GASOLINE: "Gasoline",
+    DIESEL: "Diesel",
+    ELECTRICITY: "Electricity"
+}
+
+let scene = Scene.GASOLINE;
+
+function nextScene() {
+    if (scene === Scene.GASOLINE)
+        scene = Scene.DIESEL;
+    else if (scene === Scene.DIESEL)
+        scene = Scene.ELECTRICITY;
+    else if (scene === Scene.ELECTRICITY)
+        scene = Scene.GASOLINE;
+}
+
 async function init() {
-    const data = await d3.csv('https://flunky.github.io/cars2017.csv');
+    data = await d3.csv('https://flunky.github.io/cars2017.csv');
     const x = d3.scaleLog([10, 150], [0, 500]);
     const y = d3.scaleLog([10, 150], [500, 0]);
 
     d3.select("svg")
         .append("g")
-        .attr("transform", "translate(49,50)")
+        .attr("transform", "translate(50,50)")
         .selectAll("circle")
         .data(data)
         .enter()
@@ -13,7 +30,6 @@ async function init() {
         .attr("cx", d => x(parseInt(d.AverageCityMPG)))
         .attr("cy", d => y(parseInt(d.AverageHighwayMPG)))
         .attr("r", d => 3 + parseInt(d.EngineCylinders))
-        .attr("class", d => d.Fuel === "Gasoline" ? d.Fuel : "unfocused");
 
     d3.select("svg")
         .append("g")
@@ -30,4 +46,22 @@ async function init() {
             .tickValues([10, 20, 50, 100])
             .tickFormat(d3.format("~s"))
         );
+
+    setScene();
 }
+
+function setScene() {
+    d3.selectAll("circle")
+        .attr("class", "unfocused")
+        .filter(d => d.Fuel === scene)
+        .attr("class", d => d.Fuel)
+        .raise()
+}
+
+const left = document.getElementById("left");
+const right = document.getElementById("right");
+
+right.addEventListener("click", (event) => {
+    nextScene();
+    setScene();
+});
