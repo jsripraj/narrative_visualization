@@ -13,7 +13,7 @@ async function init() {
         .attr("cx", d => x(parseInt(d.AverageCityMPG)))
         .attr("cy", d => y(parseInt(d.AverageHighwayMPG)))
         .attr("r", d => 3 + parseInt(d.EngineCylinders))
-        .attr("class", d => d.Fuel);
+        .attr("class", d => d.Fuel === "Gasoline" ? d.Fuel : "unfocused");
 
     d3.select("svg")
         .append("g")

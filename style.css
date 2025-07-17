@@ -13,3 +13,8 @@ circle {
 .Electricity {
     fill: blue;
 }
+
+.unfocused {
+    fill: grey;
+    opacity: 0.33;
+}
