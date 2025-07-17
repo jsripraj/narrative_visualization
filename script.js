@@ -40,5 +40,4 @@ async function init() {
             .tickValues([9, 20, 50, 100])
             .tickFormat(d3.format("~s"))
         );
-
 }
