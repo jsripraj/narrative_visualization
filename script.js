@@ -1,7 +1,7 @@
 async function init() {
     const data = await d3.csv('https://flunky.github.io/cars2017.csv');
-    const x = d3.scaleLog([10, 150], [0, 200]);
-    const y = d3.scaleLog([10, 150], [200, 0]);
+    const x = d3.scaleLog([10, 150], [0, 500]);
+    const y = d3.scaleLog([10, 150], [500, 0]);
 
     d3.select("svg")
         .append("g")
@@ -12,7 +12,7 @@ async function init() {
         .append("circle")
         .attr("cx", d => x(parseInt(d.AverageCityMPG)))
         .attr("cy", d => y(parseInt(d.AverageHighwayMPG)))
-        .attr("r", d => 1 + parseInt(d.EngineCylinders))
+        .attr("r", d => 3 + parseInt(d.EngineCylinders))
         .attr("fill", d => {
             if (d.Fuel === "Gasoline") {
                 return "red";
@@ -27,17 +27,17 @@ async function init() {
 
     d3.select("svg")
         .append("g")
-        .attr("transform", "translate(49,50)")
+        .attr("transform", "translate(50,50)")
         .call(d3.axisLeft(y)
-            .tickValues([9, 20, 50, 100])
+            .tickValues([10, 20, 50, 100])
             .tickFormat(d3.format("~s"))
         );
 
     d3.select("svg")
         .append("g")
-        .attr("transform", "translate(49,250)")
+        .attr("transform", "translate(50,550)")
         .call(d3.axisBottom(x)
-            .tickValues([9, 20, 50, 100])
+            .tickValues([10, 20, 50, 100])
             .tickFormat(d3.format("~s"))
         );
 }
