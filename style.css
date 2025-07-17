@@ -1,3 +1,15 @@
 circle {
     stroke: black;
 }
+
+.Gasoline {
+    fill: red;
+}
+
+.Diesel {
+    fill: green;
+}
+
+.Electricity {
+    fill: blue;
+}

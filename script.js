@@ -13,17 +13,7 @@ async function init() {
         .attr("cx", d => x(parseInt(d.AverageCityMPG)))
         .attr("cy", d => y(parseInt(d.AverageHighwayMPG)))
         .attr("r", d => 3 + parseInt(d.EngineCylinders))
-        .attr("fill", d => {
-            if (d.Fuel === "Gasoline") {
-                return "red";
-            }
-            if (d.Fuel === "Diesel") {
-                return "green";
-            }
-            else { // Electricity
-                return "blue";
-            }
-        });
+        .attr("class", d => d.Fuel);
 
     d3.select("svg")
         .append("g")
