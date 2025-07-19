@@ -6,13 +6,14 @@ const Scene = {
 
 let scene = Scene.GASOLINE;
 
-function nextScene() {
+function moveScene(dir) {
+    const fwd = dir === "right";
     if (scene === Scene.GASOLINE)
-        scene = Scene.DIESEL;
+        scene = fwd ? Scene.DIESEL : Scene.ELECTRICITY;
     else if (scene === Scene.DIESEL)
-        scene = Scene.ELECTRICITY;
+        scene = fwd ? Scene.ELECTRICITY : Scene.GASOLINE;
     else if (scene === Scene.ELECTRICITY)
-        scene = Scene.GASOLINE;
+        scene = fwd ? Scene.GASOLINE : Scene.DIESEL;
 }
 
 async function init() {
@@ -61,7 +62,12 @@ function setScene() {
 const left = document.getElementById("left");
 const right = document.getElementById("right");
 
+left.addEventListener("click", (event) => {
+    moveScene("left");
+    setScene();
+});
+
 right.addEventListener("click", (event) => {
-    nextScene();
+    moveScene("right");
     setScene();
 });
