@@ -3,15 +3,15 @@ circle {
 }
 
 .Gasoline {
-    fill: red;
+    fill: lightblue;
 }
 
 .Diesel {
-    fill: green;
+    fill: yellow;
 }
 
 .Electricity {
-    fill: blue;
+    fill: lightgreen;
 }
 
 .unfocused {

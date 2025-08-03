@@ -62,12 +62,17 @@ function setScene() {
 }
 
 function createAnnotation() {
-    const type = d3.annotationCalloutCircle
+    const gasolineLabel = "In 2017, nearly all cars on the road used gasoline engines. Since their invention in the late 19th century, they had evolved to become reliable and widely adopted. These engines combusted air and fuel in cylinders—usually 4, 6, or 8. More cylinders generally meant more power, but also lower fuel efficiency. Typical gasoline cars averaged between 15 and 40 miles per gallon.";
+    const dieselLabel = "In 2017, diesel engines powered a smaller share of cars, mostly in trucks and some European vehicles. Invented in the 1890s, diesel engines became known for their fuel efficiency and torque. Like gasoline engines, they used cylinders to combust fuel—but diesel fuel ignites under pressure, without spark plugs. Diesel cars often achieved higher miles per gallon than gasoline ones, sometimes exceeding 40 mpg, but concerns about emissions limited their broader adoption in the U.S.";
+    const electricityLabel = "In 2017, electric cars were gaining popularity as a cleaner alternative to gasoline and diesel. Unlike combustion engines, electric motors had no cylinders and operated using electricity stored in batteries. Electric vehicles delivered instant torque and smooth acceleration, with energy efficiency far exceeding traditional engines. While range was limited compared to fuel-powered cars, advances in battery technology were rapidly improving driving distance.";
+
+    const type = d3.annotationCalloutCircle;
 
     const annotations = [{
         note: {
-            label: "Longer text to show text wrapping",
-            title: "Annotations :)"
+            label: gasolineLabel,
+            title: "Gasoline",
+            wrap: 190
         },
         //can use x, y directly instead of data
         // data: { date: "18-Sep-09", close: 185.02 },
@@ -78,7 +83,8 @@ function createAnnotation() {
         subject: {
             radius: 50,
             radiusPadding: 5
-        }
+        },
+        color: "#000000"
     }]
 
     // const parseTime = d3.timeParse("%d-%b-%y")
@@ -89,7 +95,7 @@ function createAnnotation() {
     // const y = d3.scaleLinear().range([300, 0])
 
     const makeAnnotations = d3.annotation()
-        .editMode(true)
+        // .editMode(true)
         //also can set and override in the note.padding property
         //of the annotation object
         .notePadding(15)
