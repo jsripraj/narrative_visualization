@@ -49,6 +49,8 @@ async function init() {
         );
 
     setScene();
+
+    createAnnotation();
 }
 
 function setScene() {
@@ -57,6 +59,57 @@ function setScene() {
         .filter(d => d.Fuel === scene)
         .attr("class", d => d.Fuel)
         .raise()
+}
+
+function createAnnotation() {
+    const type = d3.annotationCalloutCircle
+
+    const annotations = [{
+        note: {
+            label: "Longer text to show text wrapping",
+            title: "Annotations :)"
+        },
+        //can use x, y directly instead of data
+        // data: { date: "18-Sep-09", close: 185.02 },
+        x: 200,
+        y: 200,
+        dy: 137,
+        dx: 162,
+        subject: {
+            radius: 50,
+            radiusPadding: 5
+        }
+    }]
+
+    // const parseTime = d3.timeParse("%d-%b-%y")
+    // const timeFormat = d3.timeFormat("%d-%b-%y")
+
+    //Skipping setting domains for sake of example
+    // const x = d3.scaleTime().range([0, 800])
+    // const y = d3.scaleLinear().range([300, 0])
+
+    const makeAnnotations = d3.annotation()
+        .editMode(true)
+        //also can set and override in the note.padding property
+        //of the annotation object
+        .notePadding(15)
+        .type(type)
+        //accessors & accessorsInverse not needed
+        //if using x, y in annotations JSON
+        // .accessors({
+        //     x: d => x(parseTime(d.date)),
+        //     y: d => y(d.close)
+        // })
+        // .accessorsInverse({
+        //     date: d => timeFormat(x.invert(d.x)),
+        //     close: d => y.invert(d.y)
+        // })
+        .annotations(annotations)
+
+    d3.select("svg")
+        .append("g")
+        .attr("class", "annotation-group")
+        .call(makeAnnotations)
 }
 
 const left = document.getElementById("left");
