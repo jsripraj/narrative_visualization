@@ -4,7 +4,7 @@ const Scene = {
     ELECTRICITY: "Electricity"
 }
 
-let scene = Scene.ELECTRICITY;
+let scene = Scene.GASOLINE;
 
 const annotations = [{
     note: {
@@ -34,7 +34,8 @@ function moveScene(dir) {
 }
 
 async function init() {
-    data = await d3.csv('https://flunky.github.io/cars2017.csv');
+    // data = await d3.csv('https://flunky.github.io/cars2017.csv');
+    data = await d3.csv('cars2017.csv')
 
     const svg = d3.select("svg");
     const margin = { top: 50, right: 50, bottom: 50, left: 50 };
@@ -47,6 +48,8 @@ async function init() {
     const g = svg.append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
+    const tooltip = d3.select("#tooltip");
+
     // Circles
     g.selectAll("circle")
         .data(data)
@@ -55,6 +58,28 @@ async function init() {
         .attr("cx", d => x(parseInt(d.AverageCityMPG)))
         .attr("cy", d => y(parseInt(d.AverageHighwayMPG)))
         .attr("r", d => 3 + parseInt(d.EngineCylinders))
+        .attr("class", d => {
+            if (d.Model && d.Image) {
+                console.log(d);
+                return "has-tooltip";
+            }
+            return "";
+        })
+        .on("mouseover", function (event, d) {
+            if (d.Model && d.Image) {
+                tooltip.html(`<strong>${d.Make} ${d.Model}</strong><br>
+                    <img src="${d.Image}" alt="${d.Model}" width="150">`)
+                    .style("visibility", "visible");
+            }
+        })
+        .on("mousemove", function (event) {
+            tooltip
+                .style("top", (event.pageY + 15) + "px")
+                .style("left", (event.pageX + 15) + "px");
+        })
+        .on("mouseout", function () {
+            tooltip.style("visibility", "hidden");
+        });
 
     // Y Axis
     g.append("g")
@@ -62,7 +87,7 @@ async function init() {
             .tickValues([10, 20, 50, 100])
             .tickFormat(d3.format("~s"))
         )
-    
+
     // Y Axis Label
     g.append("text")
         .attr("transform", "rotate(-90)")
@@ -97,12 +122,18 @@ async function init() {
 }
 
 function setScene() {
+    // d3.selectAll("circle")
+    //     .attr("class", "unfocused")
+    //     .filter(d => d.Fuel === scene)
+    //     .attr("class", d => d.Fuel)
+    //     .raise()
     d3.selectAll("circle")
-        .attr("class", "unfocused")
+        .classed("unfocused", true)
         .filter(d => d.Fuel === scene)
-        .attr("class", d => d.Fuel)
+        .classed("unfocused", false)
+        .classed(scene, true)
         .raise()
-    
+
     updateAnnotations();
     d3.select(".annotation-group")
         .call(makeAnnotations)

@@ -18,3 +18,7 @@ circle {
     fill: grey;
     opacity: 0.15;
 }
+
+.has-tooltip {
+    fill: red;
+}
