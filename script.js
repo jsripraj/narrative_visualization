@@ -4,18 +4,18 @@ const Scene = {
     ELECTRICITY: "Electricity"
 }
 
-let scene = Scene.GASOLINE;
+let scene = Scene.ELECTRICITY;
 
 const annotations = [{
     note: {
         wrap: 400
     },
-    dy: 137,
-    dx: 162,
+    nx: 600,
+    ny: 300,
     subject: {
         radiusPadding: 5
     },
-    color: "black"
+    color: "darkred"
 }];
 
 const makeAnnotations = d3.annotation()
@@ -35,11 +35,12 @@ function moveScene(dir) {
 
 async function init() {
     data = await d3.csv('https://flunky.github.io/cars2017.csv');
+
+    const svg = d3.select("svg");
     const x = d3.scaleLog([10, 150], [0, 500]);
     const y = d3.scaleLog([10, 150], [500, 0]);
 
-    d3.select("svg")
-        .append("g")
+    svg.append("g")
         .attr("transform", "translate(50,50)")
         .selectAll("circle")
         .data(data)
@@ -49,24 +50,21 @@ async function init() {
         .attr("cy", d => y(parseInt(d.AverageHighwayMPG)))
         .attr("r", d => 3 + parseInt(d.EngineCylinders))
 
-    d3.select("svg")
-        .append("g")
+    svg.append("g")
         .attr("transform", "translate(50,50)")
         .call(d3.axisLeft(y)
             .tickValues([10, 20, 50, 100])
             .tickFormat(d3.format("~s"))
-        );
+        )
 
-    d3.select("svg")
-        .append("g")
+    svg.append("g")
         .attr("transform", "translate(50,550)")
         .call(d3.axisBottom(x)
             .tickValues([10, 20, 50, 100])
             .tickFormat(d3.format("~s"))
         );
     
-    d3.select("svg")
-        .append("g")
+    svg.append("g")
         .attr("class", "annotation-group")
         .call(makeAnnotations)
 
@@ -94,51 +92,36 @@ function updateAnnotations() {
         note: {
             label: gasolineLabel,
             title: "Gasoline",
-            wrap: 400
         },
-        x: 200,
-        y: 200,
-        dy: 137,
-        dx: 162,
+        x: 170,
+        y: 370,
         subject: {
-            radius: 50,
-            radiusPadding: 5
+            radius: 170,
         },
-        color: "#000000"
     }
 
     const dieselAnnotation = {
         note: {
             label: dieselLabel,
             title: "Diesel",
-            wrap: 400
         },
-        x: 200,
-        y: 200,
-        dy: 137,
-        dx: 162,
+        x: 225,
+        y: 325,
         subject: {
-            radius: 50,
-            radiusPadding: 5
+            radius: 70,
         },
-        color: "#000000"
     }
 
     const electricityAnnotation = {
         note: {
             label: electricityLabel,
             title: "Electricity",
-            wrap: 400
         },
-        x: 200,
-        y: 200,
-        dy: 137,
-        dx: 162,
+        x: 500,
+        y: 130,
         subject: {
-            radius: 50,
-            radiusPadding: 5
+            radius: 80,
         },
-        color: "#000000"
     }
 
     let curAnnotation;
@@ -154,8 +137,7 @@ function updateAnnotations() {
     annotations[0].x = curAnnotation.x;
     annotations[0].y = curAnnotation.y;
     annotations[0].subject.radius = curAnnotation.subject.radius;
-
-    makeAnnotations.update();
+    makeAnnotations.annotations(annotations).update();
 }
 
 const left = document.getElementById("left");
