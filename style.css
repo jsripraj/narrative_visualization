@@ -22,3 +22,7 @@ circle {
 .has-tooltip {
     fill: red;
 }
+
+.annotation-subject {
+    pointer-events: none;
+}

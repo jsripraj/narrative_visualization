@@ -50,9 +50,22 @@ async function init() {
 
     const tooltip = d3.select("#tooltip");
 
+    // Annotations
+    svg.append("g")
+        .attr("class", "annotation-group")
+        .call(makeAnnotations)
+
     // Circles
     g.selectAll("circle")
-        .data(data)
+        .data(data.filter(d => !(d.Model && d.Image)))
+        .enter()
+        .append("circle")
+        .attr("cx", d => x(parseInt(d.AverageCityMPG)))
+        .attr("cy", d => y(parseInt(d.AverageHighwayMPG)))
+        .attr("r", d => 3 + parseInt(d.EngineCylinders))
+
+    g.selectAll(".has-tooltip")
+        .data(data.filter(d => d.Model && d.Image))
         .enter()
         .append("circle")
         .attr("cx", d => x(parseInt(d.AverageCityMPG)))
@@ -60,12 +73,12 @@ async function init() {
         .attr("r", d => 3 + parseInt(d.EngineCylinders))
         .attr("class", d => {
             if (d.Model && d.Image) {
-                console.log(d);
+                console.log("has-tooltip");
                 return "has-tooltip";
             }
             return "";
         })
-        .on("mouseover", function (event, d) {
+        .on("mouseover", (d) => {
             if (d.Model && d.Image) {
                 tooltip.html(`<strong>${d.Make} ${d.Model}</strong><br>
                     <img src="${d.Image}" alt="${d.Model}" width="150">`)
@@ -113,15 +126,14 @@ async function init() {
         .attr("text-anchor", "middle")
         .text("Average City MPG");
 
-    // Annotations
-    svg.append("g")
-        .attr("class", "annotation-group")
-        .call(makeAnnotations)
-
     setScene();
 }
 
 function setScene() {
+    updateAnnotations();
+    d3.select(".annotation-group")
+        .call(makeAnnotations)
+
     // d3.selectAll("circle")
     //     .attr("class", "unfocused")
     //     .filter(d => d.Fuel === scene)
@@ -132,11 +144,8 @@ function setScene() {
         .filter(d => d.Fuel === scene)
         .classed("unfocused", false)
         .classed(scene, true)
-        .raise()
-
-    updateAnnotations();
-    d3.select(".annotation-group")
-        .call(makeAnnotations)
+    
+    d3.selectAll("circle.has-tooltip").raise();
 }
 
 function updateAnnotations() {
