@@ -62,6 +62,15 @@ async function init() {
             .tickValues([10, 20, 50, 100])
             .tickFormat(d3.format("~s"))
         )
+    
+    // Y Axis Label
+    g.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("x", -height / 2)
+        .attr("y", -35)
+        .attr("fill", "black")
+        .attr("text-anchor", "middle")
+        .text("Average Highway MPG");
 
     // X Axis
     g.append("g")
@@ -70,7 +79,15 @@ async function init() {
             .tickValues([10, 20, 50, 100])
             .tickFormat(d3.format("~s"))
         );
-    
+
+    // X Axis Label
+    g.append("text")
+        .attr("x", width / 2)
+        .attr("y", height + 35)
+        .attr("fill", "black")
+        .attr("text-anchor", "middle")
+        .text("Average City MPG");
+
     // Annotations
     svg.append("g")
         .attr("class", "annotation-group")
