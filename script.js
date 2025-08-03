@@ -8,7 +8,7 @@ let scene = Scene.ELECTRICITY;
 
 const annotations = [{
     note: {
-        wrap: 400
+        wrap: 300
     },
     nx: 600,
     ny: 300,
@@ -38,7 +38,7 @@ async function init() {
 
     const svg = d3.select("svg");
     const margin = { top: 50, right: 50, bottom: 50, left: 50 };
-    const width = +svg.attr("width") - margin.left - margin.right;
+    const width = 500;
     const height = +svg.attr("height") - margin.top - margin.bottom;
 
     const x = d3.scaleLog([10, 150], [0, width]);
