@@ -37,12 +37,18 @@ async function init() {
     data = await d3.csv('https://flunky.github.io/cars2017.csv');
 
     const svg = d3.select("svg");
-    const x = d3.scaleLog([10, 150], [0, 500]);
-    const y = d3.scaleLog([10, 150], [500, 0]);
+    const margin = { top: 50, right: 50, bottom: 50, left: 50 };
+    const width = +svg.attr("width") - margin.left - margin.right;
+    const height = +svg.attr("height") - margin.top - margin.bottom;
 
-    svg.append("g")
-        .attr("transform", "translate(50,50)")
-        .selectAll("circle")
+    const x = d3.scaleLog([10, 150], [0, width]);
+    const y = d3.scaleLog([10, 150], [height, 0]);
+
+    const g = svg.append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    // Circles
+    g.selectAll("circle")
         .data(data)
         .enter()
         .append("circle")
@@ -50,20 +56,22 @@ async function init() {
         .attr("cy", d => y(parseInt(d.AverageHighwayMPG)))
         .attr("r", d => 3 + parseInt(d.EngineCylinders))
 
-    svg.append("g")
-        .attr("transform", "translate(50,50)")
+    // Y Axis
+    g.append("g")
         .call(d3.axisLeft(y)
             .tickValues([10, 20, 50, 100])
             .tickFormat(d3.format("~s"))
         )
 
-    svg.append("g")
-        .attr("transform", "translate(50,550)")
+    // X Axis
+    g.append("g")
+        .attr("transform", `translate(0,${height})`)
         .call(d3.axisBottom(x)
             .tickValues([10, 20, 50, 100])
             .tickFormat(d3.format("~s"))
         );
     
+    // Annotations
     svg.append("g")
         .attr("class", "annotation-group")
         .call(makeAnnotations)
