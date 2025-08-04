@@ -63,6 +63,16 @@ async function init() {
         .attr("cx", d => x(parseInt(d.AverageCityMPG)))
         .attr("cy", d => y(parseInt(d.AverageHighwayMPG)))
         .attr("r", d => 4 + parseInt(d.EngineCylinders))
+        .on("mouseover", (d) => {
+            tooltip.html(`<em>Fuel Type:</em> ${d.Fuel}<br>
+                <em>Engine Cylinders:</em> ${d.EngineCylinders}<br>
+                <em>Highway MPG:</em> ${d.AverageHighwayMPG}<br>
+                <em>City MPG:</em> ${d.AverageCityMPG}`)
+                .style("visibility", "visible");
+        })
+        .on("mouseout", function () {
+            tooltip.style("visibility", "hidden");
+        });
 
     g.selectAll(".has-tooltip")
         .data(data.filter(d => d.Model && d.Image))
