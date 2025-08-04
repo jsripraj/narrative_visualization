@@ -15,7 +15,7 @@ const annotations = [{
     subject: {
         radiusPadding: 5
     },
-    color: "Maroon"
+    color: "darkslategray"
 }];
 
 const makeAnnotations = d3.annotation()

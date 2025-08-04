@@ -17,11 +17,11 @@ circle {
 }
 
 .Gasoline, .Diesel, .Electricity {
-    fill: yellow;
+    fill: skyblue;
 }
 
 .has-tooltip {
-    fill: orange;
+    fill: yellow;
 }
 
 .unfocused {
