@@ -1,16 +1,16 @@
 ﻿Make,Fuel,EngineCylinders,AverageHighwayMPG,AverageCityMPG,Model,Image
 Acura,Gasoline,4,35,25,ILX,https://media.ed.edmunds-media.com/acura/ilx/2017/oem/2017_acura_ilx_sedan_technology-plus-and-a-spec-packages_fq_oem_1_1600.jpg
 Acura,Gasoline,6,28,21,,
-Alfa Romeo,Gasoline,4,33,24,,
+Alfa Romeo,Gasoline,4,33,24,Giulia,https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/wp-content/uploads/2016/10/2017-Alfa-Romeo-Giulia-112.jpg
 Alfa Romeo,Gasoline,6,24,17,,
 Aston Martin,Gasoline,12,19,12,,
 Audi,Gasoline,4,30,23,,
 Audi,Gasoline,6,27,19,,
 Audi,Gasoline,8,26,17,,
-Audi,Gasoline,10,22,14,,
+Audi,Gasoline,10,22,14,R8,https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/wp-content/uploads/2016/07/2017-Audi-R8-V-10-Plus-103.jpg?crop=0.505xw:0.824xh;0.327xw,0.176xh&resize=1200:*
 Audi,Gasoline,4,32,24,,
 Bentley,Gasoline,8,22,13,,
-Bentley,Gasoline,12,20,12,,
+Bentley,Gasoline,12,20,12,Continental GT W12,https://www.autobahnsouth.com/imagetag/186/main/l/Used-2017-Bentley-Continental-GT-W12-1656004196.jpg
 BMW,Diesel,4,41,30,,
 BMW,Diesel,6,29,23,,
 BMW,Electricity,0,109,133,,
@@ -42,7 +42,7 @@ Chrysler,Gasoline,6,29,20,,
 Dodge,Gasoline,8,24,15,,
 Dodge,Gasoline,8,23,14,,
 Dodge,Gasoline,10,19,12,,
-Dodge,Gasoline,4,25,19,,
+Dodge,Gasoline,4,25,19,Dart,https://di-uploads-pod10.dealerinspire.com/dupagecdjr/uploads/2017/06/2016DodgeDart-1024x545.jpg
 Dodge,Gasoline,6,27,18,,
 Ferrari,Gasoline,8,22,16,,
 Ferrari,Gasoline,12,16,12,,
@@ -71,7 +71,7 @@ Hyundai,Electricity,0,122,150,,
 Hyundai,Gasoline,4,34,27,,
 Hyundai,Gasoline,6,25,18,,
 Infiniti,Gasoline,4,30,22,,
-Infiniti,Gasoline,6,27,20,,
+Infiniti,Gasoline,6,27,20,Q50,https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/wp-content/uploads/2017/02/2017-Infiniti-Q50-Signature-Edition-107.jpg?crop=0.743xw:0.694xh;0.147xw,0.282xh&resize=1200:*
 Infiniti,Gasoline,8,22,15,,
 Infiniti,Gasoline,4,27,25,,
 Jaguar,Diesel,4,39,30,,
@@ -111,7 +111,7 @@ Mercedes-Benz,Electricity,0,82,85,,
 Mercedes-Benz,Gasoline,4,30,23,,
 Mercedes-Benz,Gasoline,6,25,19,,
 Mercedes-Benz,Gasoline,8,22,16,,
-Mercedes-Benz,Gasoline,12,20,13,,
+Mercedes-Benz,Gasoline,12,20,13,S65 AMG Coupe,https://car-images.bauersecure.com/wp-images/12380/mercedes-amg-s65-01.jpg
 MINI,Gasoline,4,33,24,,
 Mitsubishi,Electricity,0,102,121,,
 Mitsubishi,Gasoline,6,27,20,,
