@@ -81,7 +81,11 @@ async function init() {
         .on("mouseover", (d) => {
             if (d.Model && d.Image) {
                 tooltip.html(`<strong>${d.Make} ${d.Model}</strong><br>
-                    <img src="${d.Image}" alt="${d.Model}" width="150">`)
+                    <img src="${d.Image}" alt="${d.Model}" width="150"><br>
+                    <em>Fuel Type:</em> ${d.Fuel}<br>
+                    <em>Engine Cylinders:</em> ${d.EngineCylinders}<br>
+                    <em>Highway MPG:</em> ${d.AverageHighwayMPG}<br>
+                    <em>City MPG:</em> ${d.AverageCityMPG}`)
                     .style("visibility", "visible");
             }
         })
