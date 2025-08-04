@@ -71,28 +71,15 @@ async function init() {
         .attr("cx", d => x(parseInt(d.AverageCityMPG)))
         .attr("cy", d => y(parseInt(d.AverageHighwayMPG)))
         .attr("r", d => 4 + parseInt(d.EngineCylinders))
-        .attr("class", d => {
-            if (d.Model && d.Image) {
-                console.log("has-tooltip");
-                return "has-tooltip";
-            }
-            return "";
-        })
+        .attr("class", "has-tooltip")
         .on("mouseover", (d) => {
-            if (d.Model && d.Image) {
-                tooltip.html(`<strong>${d.Make} ${d.Model}</strong><br>
-                    <img src="${d.Image}" alt="${d.Model}" width="150"><br>
-                    <em>Fuel Type:</em> ${d.Fuel}<br>
-                    <em>Engine Cylinders:</em> ${d.EngineCylinders}<br>
-                    <em>Highway MPG:</em> ${d.AverageHighwayMPG}<br>
-                    <em>City MPG:</em> ${d.AverageCityMPG}`)
-                    .style("visibility", "visible");
-            }
-        })
-        .on("mousemove", function (event) {
-            tooltip
-                .style("top", (event.pageY + 15) + "px")
-                .style("left", (event.pageX + 15) + "px");
+            tooltip.html(`<strong>${d.Make} ${d.Model}</strong><br>
+                <img src="${d.Image}" alt="${d.Model}" width="150"><br>
+                <em>Fuel Type:</em> ${d.Fuel}<br>
+                <em>Engine Cylinders:</em> ${d.EngineCylinders}<br>
+                <em>Highway MPG:</em> ${d.AverageHighwayMPG}<br>
+                <em>City MPG:</em> ${d.AverageCityMPG}`)
+                .style("visibility", "visible");
         })
         .on("mouseout", function () {
             tooltip.style("visibility", "hidden");
