@@ -3,7 +3,7 @@ Acura,Gasoline,4,35,25,ILX,https://media.ed.edmunds-media.com/acura/ilx/2017/oem
 Acura,Gasoline,6,28,21,,
 Alfa Romeo,Gasoline,4,33,24,Giulia,https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/wp-content/uploads/2016/10/2017-Alfa-Romeo-Giulia-112.jpg
 Alfa Romeo,Gasoline,6,24,17,,
-Aston Martin,Gasoline,12,19,12,,
+Aston Martin,Gasoline,12,19,12,DB11,https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/wp-content/uploads/2016/02/2017-Aston-Martin-DB11-104.jpg?crop=0.840xw:0.771xh;0.145xw,0.109xh&resize=2048:*
 Audi,Gasoline,4,30,23,,
 Audi,Gasoline,6,27,19,,
 Audi,Gasoline,8,26,17,,
@@ -13,8 +13,8 @@ Bentley,Gasoline,8,22,13,,
 Bentley,Gasoline,12,20,12,Continental GT W12,https://www.autobahnsouth.com/imagetag/186/main/l/Used-2017-Bentley-Continental-GT-W12-1656004196.jpg
 BMW,Diesel,4,41,30,,
 BMW,Diesel,6,29,23,335d xDrive,https://images.clickdealer.co.uk/vehicles/3500/3500484/large1/75794287.jpg
-BMW,Electricity,0,109,133,,
-BMW,Gasoline,2,33,36,,
+BMW,Electricity,0,109,133,i3,https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/17q4/692997/2017-bmw-i3-ev-test-review-car-and-driver-photo-693636-s-original.jpg?crop=0.611xw:1.00xh;0.191xw,0&resize=1200:*
+BMW,Gasoline,2,33,36,230i,https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQIU3AgoCi2k6UdqYiZ0BEBSDNfIIJ7DXLyHDKg7RcytMoApxxQYGuoaHsmAHMes3x-HG1T-XJA_VzDRWjyD8Who-xNxr2SH0uoBIKHuex4lw
 BMW,Gasoline,3,29,28,,
 BMW,Gasoline,4,32,23,,
 BMW,Gasoline,6,28,19,,
@@ -29,7 +29,7 @@ Cadillac,Gasoline,8,21,14,,
 Cadillac,Gasoline,4,32,22,,
 Cadillac,Gasoline,6,26,18,,
 Cadillac,Gasoline,8,21,15,,
-Chevrolet,Diesel,4,29,21,,
+Chevrolet,Diesel,4,29,21,Colorado Diesel,https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/17q3/685270/2017-chevrolet-colorado-zr2-diesel-test-review-car-and-driver-photo-685312-s-original.jpg
 Chevrolet,Electricity,0,110,128,Bolt EV,https://media.ed.edmunds-media.com/chevrolet/bolt-ev/2017/oem/2017_chevrolet_bolt-ev_4dr-hatchback_premier_fq_oem_1_1600.jpg
 Chevrolet,Gasoline,4,31,21,,
 Chevrolet,Gasoline,8,23,15,,
@@ -45,7 +45,7 @@ Dodge,Gasoline,10,19,12,,
 Dodge,Gasoline,4,25,19,Dart,https://di-uploads-pod10.dealerinspire.com/dupagecdjr/uploads/2017/06/2016DodgeDart-1024x545.jpg
 Dodge,Gasoline,6,27,18,,
 Ferrari,Gasoline,8,22,16,,
-Ferrari,Gasoline,12,16,12,,
+Ferrari,Gasoline,12,16,12,812 Superfast,https://media.wired.com/photos/5926764eaf95806129f4f85d/master/pass/ferrari_812-Superfast_TA.jpg
 Fiat,Electricity,0,103,121,,
 Fiat,Gasoline,4,34,26,,
 Fiat,Gasoline,4,30,22,500,https://www.iihs.org/cdn-cgi/image/width=636/api/ratings/model-year-images/2312/
