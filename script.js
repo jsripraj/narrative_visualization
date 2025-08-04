@@ -62,7 +62,7 @@ async function init() {
         .append("circle")
         .attr("cx", d => x(parseInt(d.AverageCityMPG)))
         .attr("cy", d => y(parseInt(d.AverageHighwayMPG)))
-        .attr("r", d => 3 + parseInt(d.EngineCylinders))
+        .attr("r", d => 4 + parseInt(d.EngineCylinders))
 
     g.selectAll(".has-tooltip")
         .data(data.filter(d => d.Model && d.Image))
@@ -70,7 +70,7 @@ async function init() {
         .append("circle")
         .attr("cx", d => x(parseInt(d.AverageCityMPG)))
         .attr("cy", d => y(parseInt(d.AverageHighwayMPG)))
-        .attr("r", d => 3 + parseInt(d.EngineCylinders))
+        .attr("r", d => 4 + parseInt(d.EngineCylinders))
         .attr("class", d => {
             if (d.Model && d.Image) {
                 console.log("has-tooltip");
