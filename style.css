@@ -35,6 +35,7 @@ circle {
 .unfocused {
     fill: grey;
     opacity: 0.15;
+    pointer-events: none;
 }
 
 .annotation-subject {
